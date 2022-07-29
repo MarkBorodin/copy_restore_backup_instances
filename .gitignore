@@ -1,0 +1,12 @@
+data.py
+.idea/
+__pycache__/
+venv
+snapshot-marketeers-database.sql
+snapshot-marketeers-image.tar.gz
+snapshot_example/
+snapshot/
+marketeersbern/
+test.py
+docker-compose.yml
+*.zip

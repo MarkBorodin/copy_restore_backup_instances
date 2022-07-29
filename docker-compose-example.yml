@@ -1,0 +1,54 @@
+version: '2'
+
+services:
+
+  DB_CONTAINER_NAME_EXAMPLE:
+    restart: always
+    image: percona/percona-server:5.7
+    container_name: DB_CONTAINER_NAME_EXAMPLE
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=MYSQL_ROOT_PASSWORD_EXAMPLE
+      - MYSQL_DATABASE=MYSQL_DATABASE_EXAMPLE
+      - MYSQL_USER=MYSQL_USER_EXAMPLE
+      - MYSQL_PASSWORD=MYSQL_PASSWORD_EXAMPLE
+    command:
+      --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    networks:
+      - mautic-net
+    ports:
+      - "3308:3306"
+
+  MAUTIC_CONTAINER_NAME_EXAMPLE:
+    restart: always
+    image: alainmm89/automationmonkey:big-instances-latest
+    container_name: MAUTIC_CONTAINER_NAME_EXAMPLE
+    external_links:
+      - DB_CONTAINER_NAME_EXAMPLE:mysql
+    depends_on:
+      - DB_CONTAINER_NAME_EXAMPLE
+    ports:
+      - 8080:80
+    volumes:
+      - mautic_data:/var/www/html
+    environment:
+      - MAUTIC_DB_HOST=DB_CONTAINER_NAME_EXAMPLE
+      - MYSQL_PORT_3306_TCP=3306
+      - MAUTIC_DB_USER=MYSQL_USER_EXAMPLE
+      - MAUTIC_DB_PASSWORD=MYSQL_PASSWORD_EXAMPLE
+      - MAUTIC_DB_NAME=MYSQL_DATABASE_EXAMPLE
+      - MAUTIC_RUN_CRON_JOBS=true
+      - MAUTIC_ADMIN_EMAIL=test@test.ch
+      - MAUTIC_ADMIN_PASSWORD=madmin
+    networks:
+      - mautic-net
+
+volumes:
+  mysql_data:
+    driver: local
+  mautic_data:
+    driver: local
+networks:
+  mautic-net:
+    driver: bridge
