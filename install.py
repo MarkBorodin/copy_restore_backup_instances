@@ -1,3 +1,4 @@
+import os
 import time
 from subprocess import call
 import subprocess
@@ -28,10 +29,8 @@ if __name__ == '__main__':
     subprocess.Popen('sudo sh get-docker.sh'.split()).wait()
 
     # TODO install Docker-compose
-    # print('sudo sh install-docker-compose.sh')
-    # subprocess.Popen('sudo sh install-docker-compose.sh'.split()).wait()
-    print('sudo pip install docker-compose')
-    subprocess.Popen('sudo pip install docker-compose'.split()).wait()
+    os.system('sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname \-s)-$(uname \-m)" -o /usr/local/bin/docker-compose')    # noqa
+    os.system("sudo chmod +x /usr/local/bin/docker-compose")
 
     # TODO docker rights
     print('sudo chmod +x /usr/local/bin/docker-compose;')
@@ -70,7 +69,7 @@ if __name__ == '__main__':
     time.sleep(10)
 
     # TODO cron-docker env vars
-    print(f'sudo docker exec -it {MAUTIC_CONTAINER_NAME} sh -c "printenv | grep -v "no_proxy" >> /etc/environment"')
+    print(f"""sudo docker exec -it {MAUTIC_CONTAINER_NAME} sh -c 'printenv | grep -v "no_proxy" >> /etc/environment'""")
     subprocess.Popen(f'sudo docker exec -it {MAUTIC_CONTAINER_NAME} sh -c "printenv | grep -v "no_proxy" >> /etc/environment"'.split()).wait()    # noqa
 
     # TODO Apache
