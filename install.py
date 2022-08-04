@@ -28,10 +28,10 @@ if __name__ == '__main__':
     subprocess.Popen('sudo sh get-docker.sh'.split()).wait()
 
     # TODO install Docker-compose
-    print('sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose')    # noqa
-    subprocess.Popen('sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'.split()).wait()    # noqa
-    print('sudo chmod +x /usr/local/bin/docker-compose')
-    subprocess.Popen('sudo chmod +x /usr/local/bin/docker-compose'.split()).wait()
+    # print('sudo sh install-docker-compose.sh')
+    # subprocess.Popen('sudo sh install-docker-compose.sh'.split()).wait()
+    print('sudo pip install docker-compose')
+    subprocess.Popen('sudo pip install docker-compose'.split()).wait()
 
     # TODO docker rights
     print('sudo chmod +x /usr/local/bin/docker-compose;')
@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
     # TODO download data
     print('download_from_s3.py')
-    exec(open("download_from_s3.py").read())
+    subprocess.Popen('sudo python3 download_from_s3.py'.split()).wait()
 
     # TODO add_cron_jobs
     print('sudo python3 add_cron_jobs.py')
@@ -57,7 +57,7 @@ if __name__ == '__main__':
 
     # TODO create and run docker-compose.yml
     print('create_docker_compose_file.py')
-    exec(open("create_docker_compose_file.py").read())
+    subprocess.Popen('sudo python3 create_docker_compose_file.py'.split()).wait()
     print('sudo docker-compose up --build -d')
     subprocess.Popen('docker-compose up --build -d'.split()).wait()
 
@@ -65,12 +65,12 @@ if __name__ == '__main__':
 
     # TODO restore from dump
     print('restore_from_copy.py')
-    exec(open("restore_from_copy.py").read())
+    subprocess.Popen('sudo python3 restore_from_copy.py'.split()).wait()
 
     time.sleep(10)
 
     # TODO cron-docker env vars
-    print(f'docker exec -it {MAUTIC_CONTAINER_NAME} sh -c "printenv | grep -v "no_proxy" >> /etc/environment"')
+    print(f'sudo docker exec -it {MAUTIC_CONTAINER_NAME} sh -c "printenv | grep -v "no_proxy" >> /etc/environment"')
     subprocess.Popen(f'sudo docker exec -it {MAUTIC_CONTAINER_NAME} sh -c "printenv | grep -v "no_proxy" >> /etc/environment"'.split()).wait()    # noqa
 
     # TODO Apache
