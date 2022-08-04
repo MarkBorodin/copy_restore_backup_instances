@@ -42,6 +42,10 @@ if __name__ == '__main__':
     subprocess.Popen('sudo chgrp docker /usr/local/bin/docker-compose'.split()).wait()
     print('sudo chmod 750 /usr/local/bin/docker-compose')
     subprocess.Popen('sudo chmod 750 /usr/local/bin/docker-compose'.split()).wait()
+    print('sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose')
+    subprocess.Popen('sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose'.split()).wait()
+    print('sudo service docker restart')
+    subprocess.Popen('sudo service docker restart'.split()).wait()
 
     # TODO download data
     print('download_from_s3.py')
@@ -79,7 +83,7 @@ if __name__ == '__main__':
     print('echo "y" | sudo ufw allow ssh')
     subprocess.Popen('sudo ufw allow ssh'.split()).wait()
     print('sudo ufw enable')
-    subprocess.Popen('sudo ufw enable'.split()).wait()
+    subprocess.Popen('echo "y" | sudo ufw enable'.split()).wait()
 
     print('edit mautic.conf')
     with open('mautic.conf', 'r') as file:
