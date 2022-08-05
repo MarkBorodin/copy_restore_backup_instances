@@ -43,16 +43,16 @@ class BackupManagement(object):
 
     def upload_to_s3(
             self,
-            upload_filename=UPLOAD_S3_FILENAME,
+            filename=UPLOAD_S3_FILENAME,
             key=f'{INSTANCE_NAME}/{UPLOAD_S3_KEY}'
     ):
         """
         upload object to s3 bucket
-        :param upload_filename: str
+        :param filename: str
         :param key: str
         :return: None
         """
-        with open(upload_filename, 'rb') as data:
+        with open(filename, 'rb') as data:
             self.bucket.upload_fileobj(Key=key, Fileobj=data)
 
     def download_from_s3(
