@@ -109,7 +109,7 @@ if __name__ == '__main__':
     subprocess.Popen('sudo service apache2 restart'.split()).wait()
 
     # TODO Certificate
-    print('sudo apt -y install certbot python3-certbot-apache')
+    print('sudo apt install certbot -y python3-certbot-apache')
     subprocess.Popen('sudo apt install certbot python3-certbot-apache'.split()).wait()
     print(f'sudo certbot --non-interactive --apache --agree-tos -m {CERTBOT_EMAIL} -d {NEW_URL}')
     subprocess.Popen(f'sudo certbot --non-interactive --apache --agree-tos -m {CERTBOT_EMAIL} -d {NEW_URL}'.split()).wait()    # noqa
