@@ -1,5 +1,6 @@
 from datetime import timedelta
-
+import os
+import time
 import boto3
 
 from data import *
@@ -103,3 +104,17 @@ class BackupManagement(object):
             if b_object.key.split(sep='/')[0] == INSTANCE_NAME:
                 if self.is_old_object(b_object):
                     self.delete_from_s3(key=b_object.key)
+        self.remove_local_old_copies()
+
+    @staticmethod
+    def remove_local_old_copies():
+        """
+        remove old copies from local
+        :return: None
+        """
+        path = '.'
+        now = time.time()
+        for filename in os.listdir(path):
+            if os.path.getmtime(os.path.join(path, filename)) < now - 30 * 86400 and filename.endswith('.zip'):
+                if os.path.isfile(os.path.join(path, filename)):
+                    os.remove(os.path.join(path, filename))
