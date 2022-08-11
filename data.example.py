@@ -34,7 +34,7 @@ AWS_ACCESS_KEY_ID: str = 'some key'
 AWS_SECRET_ACCESS_KEY: str = 'some key'
 
 # S3_BUCKET NAME
-S3_BUCKET: str = 'automation-monkey-instance-backups'
+S3_BUCKET: str = 'some name'
 
 # UPLOAD S3_FILENAME S3_KEY (generated automatically - today's date + .zip)
 UPLOAD_S3_FILENAME: str = datetime.today().strftime("%d.%m.%Y") + '.zip'
@@ -54,7 +54,7 @@ DOWNLOAD_S3_KEY: str = DOWNLOAD_S3_FILENAME
 # GENERAL
 
 # instance name (is part of the key for basket s3. (folder name))
-INSTANCE_NAME: str = 'marketeersbern'
+INSTANCE_NAME: str = 'test'
 
 # os user
 OS_USER: str = 'ubuntu'
