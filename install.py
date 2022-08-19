@@ -20,7 +20,11 @@ if __name__ == '__main__':
 
     # TODO install -r requirements.txt
     print('yes | pip install -r requirements.txt')
-    subprocess.Popen('pip install -r requirements.txt'.split()).wait()
+    subprocess.Popen('yes | pip install -r requirements.txt'.split()).wait()
+
+    # TODO install sudo -r requirements.txt
+    print('yes | sudo pip install -r requirements.txt')
+    subprocess.Popen('yes | sudo pip install -r requirements.txt'.split()).wait()
 
     # TODO install Docker
     print('curl -fsSL get.docker.com -o get-docker.sh')
@@ -53,6 +57,10 @@ if __name__ == '__main__':
     # TODO add_cron_jobs
     print('sudo python3 add_cron_jobs.py')
     subprocess.Popen('sudo python3 add_cron_jobs.py'.split()).wait()
+
+    # TODO restart cron
+    print('sudo service cron reload')
+    subprocess.Popen('sudo service cron reload'.split()).wait()
 
     # TODO create and run docker-compose.yml
     print('create_docker_compose_file.py')
