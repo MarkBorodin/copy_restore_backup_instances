@@ -23,8 +23,8 @@ if __name__ == '__main__':
     subprocess.Popen('pip install -r requirements.txt'.split()).wait()
 
     # TODO install sudo -r requirements.txt
-    print('yes | sudo pip install -r requirements.txt')
-    subprocess.Popen('yes | sudo pip install -r requirements.txt'.split()).wait()
+    print('sudo pip install -r requirements.txt')
+    subprocess.Popen('sudo pip install -r requirements.txt'.split()).wait()
 
     # TODO install Docker
     print('curl -fsSL get.docker.com -o get-docker.sh')
