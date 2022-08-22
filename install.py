@@ -76,6 +76,16 @@ if __name__ == '__main__':
 
     time.sleep(10)
 
+    # TODO docker restart
+    print('sudo docker restart $(sudo docker ps -q)')
+    subprocess.Popen('sudo docker restart $(sudo docker ps -q)'.split()).wait()
+    time.sleep(1)
+
+    # TODO docker-compose restart
+    print('sudo docker compose restart')
+    subprocess.Popen('sudo docker compose restart'.split()).wait()
+    time.sleep(1)
+
     # TODO cron-docker env vars
     print(f"""sudo docker exec -it {MAUTIC_CONTAINER_NAME} sh -c 'printenv | grep -v "no_proxy" >> /etc/environment'""")
     subprocess.Popen(f'sudo docker exec -it {MAUTIC_CONTAINER_NAME} sh -c "printenv | grep -v "no_proxy" >> /etc/environment"'.split()).wait()    # noqa
