@@ -115,6 +115,6 @@ class BackupManagement(object):
         path = '.'
         now = time.time()
         for filename in os.listdir(path):
-            if os.path.getmtime(os.path.join(path, filename)) < now - 30 * 86400 and filename.endswith('.zip'):
+            if os.path.getmtime(os.path.join(path, filename)) < now - 2 * 86400 and filename.endswith('.zip'):
                 if os.path.isfile(os.path.join(path, filename)):
                     os.remove(os.path.join(path, filename))
