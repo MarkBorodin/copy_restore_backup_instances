@@ -77,8 +77,8 @@ if __name__ == '__main__':
     time.sleep(10)
 
     # TODO docker restart
-    print('sudo docker restart $(sudo docker ps -q)')
-    subprocess.Popen('sudo docker restart $(sudo docker ps -q)'.split()).wait()
+    print('sudo systemctl restart docker')
+    subprocess.Popen('sudo systemctl restart docker'.split()).wait()
     time.sleep(1)
 
     # TODO docker-compose restart
