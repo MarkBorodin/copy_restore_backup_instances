@@ -120,4 +120,4 @@ if __name__ == '__main__':
     print('sudo apt install certbot -y python3-certbot-apache')
     subprocess.Popen('sudo apt install certbot -y python3-certbot-apache'.split()).wait()
     print(f'sudo certbot --non-interactive --apache --agree-tos -m {CERTBOT_EMAIL} -d {NEW_URL.replace("https://", "")}')    # noqa
-    subprocess.Popen(f'sudo certbot --non-interactive --apache --agree-tos -m {CERTBOT_EMAIL} -d {NEW_URL}'.split()).wait()    # noqa
+    subprocess.Popen(f'sudo certbot --non-interactive --apache --agree-tos -m {CERTBOT_EMAIL} -d {NEW_URL.replace("https://", "")}'.split()).wait()    # noqa
