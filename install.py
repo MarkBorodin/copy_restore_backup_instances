@@ -19,8 +19,8 @@ if __name__ == '__main__':
     subprocess.Popen('sudo apt-get -y install python3-pip'.split()).wait()
 
     # TODO install -r requirements.txt
-    print('yes | pip install -r requirements.txt')
-    subprocess.Popen('yes | pip install -r requirements.txt'.split()).wait()
+    print('pip install -r requirements.txt')
+    subprocess.Popen('pip install -r requirements.txt'.split()).wait()
 
     # TODO install sudo -r requirements.txt
     print('yes | sudo pip install -r requirements.txt')
