@@ -8,6 +8,8 @@ nano data.py
 ### run script:   
 sudo python3 install.py   
 
+### reload cron:   
+sudo service cron reload
 
 ***
 
