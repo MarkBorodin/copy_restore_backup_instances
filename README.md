@@ -11,6 +11,12 @@ sudo python3 install.py
 ### reload cron:   
 sudo service cron reload
 
+### reload docker:   
+sudo systemctl restart docker
+
+### set env vars for cron in docker:   
+sudo docker exec -it automationmonkey_latest sh -c "printenv | grep -v "no_proxy" >> /etc/environment"
+
 ***
 
 Copy repository and unpack folder to the working directory.
