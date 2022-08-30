@@ -9,10 +9,10 @@ nano data.py
 sudo python3 install.py   
 
 ### update cronjobs
-sudo nano /etc/crontab
-ctrl + o
-enter
-ctrl + x
+sudo nano /etc/crontab   
+ctrl + o   
+enter   
+ctrl + x   
 
 ### reload cron:   
 sudo service cron reload
