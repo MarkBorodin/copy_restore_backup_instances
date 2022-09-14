@@ -57,4 +57,20 @@ To do this, it is needed to pass key arguments to the corresponding method in th
 
 
 
+***
+## Mautiс update to version 4
+
+### add variable to data.py:   
+nano data.py
+MAUTIC_4_IMAGE = 'markborodin/automationmonkey4:automationmonkey4'
+
+### update mautic:   
+sudo python3 update_mautic_3_to_4.py
+
+### reload docker:   
+sudo systemctl restart docker
+
+### set env vars for cron in docker:   
+sudo docker exec -it automationmonkey_latest sh -c "printenv | grep -v "no_proxy" >> /etc/environment"
+
 
