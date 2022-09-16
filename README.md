@@ -67,10 +67,5 @@ MAUTIC_4_IMAGE = 'markborodin/automationmonkey4:automationmonkey4'
 ### update mautic:   
 sudo python3 update_mautic_3_to_4.py
 
-### reload docker:   
-sudo systemctl restart docker
-
-### set env vars for cron in docker:   
-sudo docker exec -it automationmonkey_latest sh -c "printenv | grep -v "no_proxy" >> /etc/environment"
-
-
+### clear cache:   
+sudo docker exec -it automationmonkey_latest sh -c "php bin/console cache:clear --env=prod"
